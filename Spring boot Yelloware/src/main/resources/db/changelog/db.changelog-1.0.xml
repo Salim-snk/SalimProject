@@ -1,0 +1,77 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="1" author="sha">
+        <sql>
+            CREATE TABLE user (
+            id BIGINT NOT NULL AUTO_INCREMENT,
+            username VARCHAR(255) NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            name VARCHAR(255) NOT NULL,
+            role VARCHAR(255) NOT NULL,
+            CONSTRAINT PK_id PRIMARY KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE user;
+        </rollback>
+    </changeSet>
+    <changeSet id="2" author="sha">
+        <sql>
+            CREATE TABLE applicant (
+            id BIGINT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(255) NOT NULL,
+            price DOUBLE,
+            explanation VARCHAR(1000),
+            CONSTRAINT PK_id PRIMARY KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE applicant;
+        </rollback>
+    </changeSet>
+    <changeSet id="3" author="sha">
+        <sql>
+            INSERT INTO applicant (name, price, explanation) values("applicant 1", 19.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 2", 10.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 3", 14.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 4", 15.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 5", 69.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 6", 59.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 7", 49.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 8", 39.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 9", 29.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+            INSERT INTO applicant (name, price, explanation) values("applicant 10", 9.99,
+            "applicant is so effective and has many attributes like X, Y, Z. Also, we can say about it...");
+        </sql>
+        <rollback>
+            TRUNCATE TABLE applicant;
+        </rollback>
+    </changeSet>
+    <changeSet id="4" author="sha">
+        <sql>
+            CREATE TABLE transaction(
+            id BIGINT NOT NULL AUTO_INCREMENT,
+            applicant_id BIGINT NOT NULL,
+            user_id BIGINT NOT NULL,
+            purchase_date DATETIME NOT NULL,
+            CONSTRAINT PK_id PRIMARY KEY (id),
+            CONSTRAINT fk_tran_applicant FOREIGN KEY (applicant_id) REFERENCES applicant(id) ON DELETE CASCADE ON UPDATE
+            CASCADE,
+            CONSTRAINT fk_tran_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE
+            CASCADE
+            );
+        </sql>
+        <rollback>
+            DROP TABLE transaction;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
