@@ -1,0 +1,32 @@
+[
+ {
+
+"Name":"Salim",
+"Surname":"Sinek",
+"PhoneNo":"5359550843",
+"Mail":"salimsinek@hotmail.com",
+"ApplicantRole":"User",
+"FirstStartDate":"20.08.2021",
+"Languageknowledgeandlevel": "b1",
+"Technicalİnformation":"Stajyer",
+"DateOfBirth":"20.09.2021",
+"Experience":"Java,Angular",
+"İsİtActive":"Active"
+}, 
+{
+"Name":"Ali",
+"Surname":"Keskin",
+"PhoneNo":"5359875847",
+"Mail":"alikeskin@hotmail.com",
+"ApplicantRole":"User",
+"FirstStartDate":"20.08.2021",
+"Languageknowledgeandlevel": "b2",
+"Technicalİnformation":"Engineer",
+"DateOfBirth":"20.09.2021",
+"Experience":"Angular",
+"İsİtActive":"Active"
+}
+
+
+
+]
